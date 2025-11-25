@@ -12,3 +12,5 @@ Chapter 1: Setup
 - Lets begin to think about templates
 - mkdir templates
 - touch templates/base.layout.gohtml
+- add a `render.go` file to handle template rendering
+- These changes will warrant command line params for using template caching
