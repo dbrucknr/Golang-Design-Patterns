@@ -32,3 +32,22 @@ func (app *Application) CreateCatFromFactory(w http.ResponseWriter, r *http.Requ
 func (app *Application) TestPatterns(w http.ResponseWriter, r *http.Request) {
 	app.RenderTemplate(w, "test.page.gohtml", nil)
 }
+
+// These could be combined to match on a path param...
+func (app *Application) CreateDogFromAbstractFactory(w http.ResponseWriter, r *http.Request) {
+	var t toolbox.Tools
+	dog, err := pets.NewPetFromAbstractFactory("dog")
+	if err != nil {
+		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
+	}
+	_ = t.WriteJSON(w, http.StatusOK, dog)
+}
+
+func (app *Application) CreateCatFromAbstractFactory(w http.ResponseWriter, r *http.Request) {
+	var t toolbox.Tools
+	cat, err := pets.NewPetFromAbstractFactory("cat")
+	if err != nil {
+		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
+	}
+	_ = t.WriteJSON(w, http.StatusOK, cat)
+}
