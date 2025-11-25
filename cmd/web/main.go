@@ -22,7 +22,9 @@ type ApplicationConfig struct {
 
 func main() {
 	// Setup Application Instance
-	app := Application{}
+	app := Application{
+		templateMap: make(map[string]*template.Template),
+	}
 	// Command Line Flags
 	flag.BoolVar(&app.config.useCache, "use-cache", false, "Enable caching")
 	flag.Parse()
