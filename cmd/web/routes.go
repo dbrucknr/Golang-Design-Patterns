@@ -24,6 +24,7 @@ func (app *Application) Routes() http.Handler {
 
 	// Routes Registration
 	mux.Get("/", app.ShowHome)
+	mux.Get("/{page}", app.ShowPage)
 
 	return mux
 }
