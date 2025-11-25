@@ -4,3 +4,7 @@ Chapter 1: Setup
 - `mkdir cmd/web` - this is a convention in Go for projects that serve web pages
     - If you create an API it goes in the `cmd/api` directory.
 - `touch cmd/web/main.go` - Here we will create a simple web server using the net/http package.
+- Adding a routing package: [Chi](https://github.com/go-chi/chi)
+  - Install command: `go get -u github.com/go-chi/chi/v5`
+- Lets add a routes.go file to define our routes
+- We will also take advantage of another Chi package to handle middleware.
