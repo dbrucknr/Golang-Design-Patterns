@@ -8,3 +8,7 @@ Chapter 1: Setup
   - Install command: `go get -u github.com/go-chi/chi/v5`
 - Lets add a routes.go file to define our routes
 - We will also take advantage of another Chi package to handle middleware.
+- Run: go mod tidy to eliminate warning
+- Lets begin to think about templates
+- mkdir templates
+- touch templates/base.layout.gohtml
