@@ -20,3 +20,7 @@ Chapter 1: Setup
 - I'm going to try and compress the image to reduce its size using: https://pixelied.com/convert.
   - Convert from jpg to webp
   - Set the quality to 20
+
+Chapter 2: Factory Pattern + Abstract Factory Pattern
+- Factory Pattern: Create an instance of an object with sensible default values.
+- Abstract Factory Pattern: Creates families of related or dependent objects without relying on their concrete classes.
