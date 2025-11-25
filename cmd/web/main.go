@@ -31,7 +31,7 @@ func main() {
 	// Server Configuration
 	srv := &http.Server{
 		Addr:              PORT,
-		Handler:           app.routes(),
+		Handler:           app.Routes(),
 		IdleTimeout:       30 * time.Second,
 		ReadTimeout:       30 * time.Second,
 		ReadHeaderTimeout: 30 * time.Second,
