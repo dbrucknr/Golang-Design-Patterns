@@ -14,3 +14,9 @@ Chapter 1: Setup
 - touch templates/base.layout.gohtml
 - add a `render.go` file to handle template rendering
 - These changes will warrant command line params for using template caching
+- Lets add in support for static assets
+- `mkdir static`
+- I added in a large image of puppies that's approximately 1MB in size.
+- I'm going to try and compress the image to reduce its size using: https://pixelied.com/convert.
+  - Convert from jpg to webp
+  - Set the quality to 20
