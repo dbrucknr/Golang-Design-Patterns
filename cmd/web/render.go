@@ -33,7 +33,7 @@ func (app *Application) RenderTemplate(w http.ResponseWriter, t string, data *Te
 	if data == nil {
 		data = &TemplateData{}
 	}
-
+	// Attempt to execute the template
 	if err := tmpl.ExecuteTemplate(w, t, data); err != nil {
 		log.Println("Error executing template:", err)
 		http.Error(w, err.Error(), http.StatusInternalServerError)

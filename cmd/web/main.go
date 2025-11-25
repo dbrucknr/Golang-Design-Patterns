@@ -25,7 +25,7 @@ func main() {
 	app := Application{
 		templateMap: make(map[string]*template.Template),
 	}
-	// Command Line Flags
+	// Command Line Flags - automatically set useCache to false (for development)
 	flag.BoolVar(&app.config.useCache, "use-cache", false, "Enable caching")
 	flag.Parse()
 	// Server Configuration
