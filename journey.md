@@ -24,3 +24,7 @@ Chapter 1: Setup
 Chapter 2: Factory Pattern + Abstract Factory Pattern
 - Factory Pattern: Create an instance of an object with sensible default values.
 - Abstract Factory Pattern: Creates families of related or dependent objects without relying on their concrete classes.
+
+- Lets setup some models / types in the project.
+- I added a toolkit from the course: `go get -u github.com/tsawler/toolbox` for parsing JSON.
+- Visit: http://localhost:4000/test-patterns to test the factories and the handlers that serve them.

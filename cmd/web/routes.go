@@ -26,6 +26,13 @@ func (app *Application) Routes() http.Handler {
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
 
+	// Display Test Page
+	mux.Get("/test-patterns", app.TestPatterns)
+
+	// API Routes
+	mux.Get("/api/dog-from-factory", app.CreateDogFromFactory)
+	mux.Get("/api/cat-from-factory", app.CreateCatFromFactory)
+
 	// Routes Registration
 	mux.Get("/", app.ShowHome)
 	mux.Get("/{page}", app.ShowPage)
