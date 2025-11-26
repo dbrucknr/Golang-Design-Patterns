@@ -15,8 +15,8 @@ func (d *DogBreed) AllDogBreeds() ([]*DogBreed, error) {
 		SELECT
 			id,
 			breed,
-			weight_low_pounds,
-			weight_high_pounds,
+			weight_low_lbs,
+			weight_high_lbs,
 			cast(((weight_low_lbs + weight_high_lbs) /2) as unsigned) as avg_weight,
 		 	lifespan,
 			coalesce(details, ''),
@@ -38,7 +38,17 @@ func (d *DogBreed) AllDogBreeds() ([]*DogBreed, error) {
 
 	for rows.Next() {
 		var b DogBreed
-		err := rows.Scan(&b.Id, &b.Breed, &b.WeightLowLbs, &b.WeightHighLbs, &b.AverageWeightLbs, &b.Lifespan, &b.Details, &b.AlternateNames, &b.GeographicOrigin)
+		err := rows.Scan(
+			&b.Id,
+			&b.Breed,
+			&b.WeightLowLbs,
+			&b.WeightHighLbs,
+			&b.AverageWeightLbs,
+			&b.Lifespan,
+			&b.Details,
+			&b.AlternateNames,
+			&b.GeographicOrigin,
+		)
 		if err != nil {
 			return nil, err
 		}

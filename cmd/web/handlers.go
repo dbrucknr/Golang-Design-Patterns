@@ -51,3 +51,12 @@ func (app *Application) CreateCatFromAbstractFactory(w http.ResponseWriter, r *h
 	}
 	_ = t.WriteJSON(w, http.StatusOK, cat)
 }
+
+func (app *Application) GetAllDogBreedsJson(w http.ResponseWriter, r *http.Request) {
+	var t toolbox.Tools
+	dogBreed, err := app.Models.DogBreed.All()
+	if err != nil {
+		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
+	}
+	_ = t.WriteJSON(w, http.StatusOK, dogBreed)
+}

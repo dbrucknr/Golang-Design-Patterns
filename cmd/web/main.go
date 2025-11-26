@@ -8,6 +8,8 @@ import (
 	"log"
 	"net/http"
 	"time"
+
+	"github.com/dbrucknr/go-design-patterns/models"
 )
 
 const PORT = ":4000"
@@ -16,7 +18,8 @@ const PORT = ":4000"
 type Application struct {
 	templateMap map[string]*template.Template
 	config      ApplicationConfig
-	Db          *sql.DB
+	DB          *sql.DB
+	Models      models.Models
 }
 type ApplicationConfig struct {
 	useCache bool
@@ -39,7 +42,9 @@ func main() {
 		log.Panic(err)
 	}
 	// Set the database pool in the app instance for sharing
-	app.Db = db
+	app.DB = db
+	// Set the connection for the models (sets a package level variable)
+	app.Models = *models.New(db)
 
 	// Server Configuration
 	srv := &http.Server{
