@@ -1,4 +1,4 @@
-Chapter 1: Setup
+# Chapter 1: Setup
 - `go mod init github.com/dbrucknr/go-design-patterns`
 - `mkdir cmd`
 - `mkdir cmd/web` - this is a convention in Go for projects that serve web pages
@@ -21,10 +21,23 @@ Chapter 1: Setup
   - Convert from jpg to webp
   - Set the quality to 20
 
-Chapter 2: Factory Pattern + Abstract Factory Pattern
+# Chapter 2: Factory Pattern + Abstract Factory Pattern
 - Factory Pattern: Create an instance of an object with sensible default values.
 - Abstract Factory Pattern: Creates families of related or dependent objects without relying on their concrete classes.
 
 - Lets setup some models / types in the project.
 - I added a toolkit from the course: `go get -u github.com/tsawler/toolbox` for parsing JSON.
 - Visit: http://localhost:4000/test-patterns to test the factories and the handlers that serve them.
+
+# Chapter 3: Repository Pattern
+- Repository Pattern: Provides an abstraction layer between the application and the data source.
+- We will use MariaDB (A MySQL database)
+- We need a driver to connect to MariaDB
+  - https://github.com/go-sql-driver/mysql
+  - `go get -u github.com/go-sql-driver/mysql`
+- We need to launch a Database, which will be done using Docker.
+  - `touch compose.yml`
+mkdir sql
+touch sql/breeders_mysql.sql
+  - I copied a data dump from the course.
+Run: `docker compose up -d`
