@@ -7,6 +7,8 @@ import (
 	_ "github.com/go-sql-driver/mysql" // Prefix with _ since this import is not used directly
 )
 
+// https://github.com/go-sql-driver/mysql
+
 const (
 	maxOpenDbConn = 5
 	maxIdleDbConn = 5

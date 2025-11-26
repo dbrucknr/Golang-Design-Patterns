@@ -38,6 +38,7 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
+	// Set the database pool in the app instance for sharing
 	app.Db = db
 
 	// Server Configuration

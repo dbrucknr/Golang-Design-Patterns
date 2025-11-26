@@ -1,6 +1,24 @@
 package models
 
-import "time"
+import (
+	"database/sql"
+	"time"
+)
+
+var db *sql.DB
+
+type Models struct {
+	DogBreed DogBreed
+}
+
+// Factory
+func New(conn *sql.DB) *Models {
+	// Set package level db variable to the connection
+	db = conn
+	return &Models{
+		DogBreed: DogBreed{},
+	}
+}
 
 // This will be stored in a database
 type DogBreed struct {
@@ -13,6 +31,10 @@ type DogBreed struct {
 	Details          string `json:"details"`
 	AlternateNames   string `json:"alternate_names"`
 	GeographicOrigin string `json:"geographic_origin"`
+}
+
+func (d *DogBreed) All() ([]*DogBreed, error) {
+	return d.AllDogBreeds()
 }
 
 // This will be a remote datasource (which is why its duplicated, even though it is identical to DogBreed)

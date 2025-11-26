@@ -30,7 +30,9 @@
 - Visit: http://localhost:4000/test-patterns to test the factories and the handlers that serve them.
 
 # Chapter 3: Repository Pattern
-- Repository Pattern: Provides an abstraction layer between the application and the data source.
+- Repository Pattern: Provides an abstraction layer between the application's business logic and the data source.
+  - Allows us to change databases with ease.
+  - Makes writing unit tests much simpler
 - We will use MariaDB (A MySQL database)
 - We need a driver to connect to MariaDB
   - https://github.com/go-sql-driver/mysql
