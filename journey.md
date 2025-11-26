@@ -41,3 +41,5 @@ mkdir sql
 touch sql/breeders_mysql.sql
   - I copied a data dump from the course.
 Run: `docker compose up -d`
+Add a db.go file to handle database connection initialization. Use it in the main function.
+Then run: `go run ./cmd/web/` to verify connection worked (after adding db.go)
