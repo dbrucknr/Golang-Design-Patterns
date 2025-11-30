@@ -36,6 +36,9 @@ func (app *Application) Routes() http.Handler {
 	mux.Get("/api/cat-from-abstract-factory", app.CreateCatFromAbstractFactory)
 	mux.Get("/api/dog-breeds", app.GetAllDogBreedsJson)
 	// mux.Get("/api/cat-breeds", app.GetAllCatBreedsJson)
+	// Builder Route
+	mux.Get("/api/dog-from-builder", app.CreateDogFromBuilder)
+	mux.Get("/api/cat-from-builder", app.CreateCatFromBuilder)
 
 	// Routes Registration
 	mux.Get("/", app.ShowHome)

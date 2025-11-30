@@ -27,6 +27,18 @@
                     <span class="text-muted">Nothing Received Yet...</span>
                 </pre>
             </div>
+
+            <hr class="my-4">
+            <h3 class="mt-4">Builder Pattern</h3>
+            <div>
+                <a href="javascript:void(0)" id="dog-builder-btn" class="btn btn-outline-secondary">Build a Dog</a>
+                <a href="javascript:void(0)" id="cat-builder-btn" class="btn btn-outline-secondary">Build a Cat</a>
+            </div>
+            <div class="mt-2" style="outline: 1px solid silver; padding: 2px;">
+                <pre id="builder-output">
+                    <span class="text-muted">Nothing Received Yet...</span>
+                </pre>
+            </div>
         </div>
     </div>
 </div>
@@ -79,6 +91,30 @@ document.addEventListener('DOMContentLoaded', function() {
                     document.getElementById('abstract-factory-output').innerHTML = data.error;
                 } else {
                     document.getElementById('abstract-factory-output').innerText = JSON.stringify(data, null, 2);
+                }
+            });
+    });
+
+    document.getElementById('dog-builder-btn').addEventListener('click', function() {
+        fetch('/api/dog-from-builder')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('builder-output').innerHTML = data.error;
+                } else {
+                    document.getElementById('builder-output').innerText = JSON.stringify(data, null, 2);
+                }
+            });
+    });
+
+        document.getElementById('cat-builder-btn').addEventListener('click', function() {
+        fetch('/api/cat-from-builder')
+            .then(response => response.json())
+            .then(data => {
+                if (data.error) {
+                    document.getElementById('builder-output').innerHTML = data.error;
+                } else {
+                    document.getElementById('builder-output').innerText = JSON.stringify(data, null, 2);
                 }
             });
     });
