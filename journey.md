@@ -45,3 +45,15 @@ touch sql/breeders_mysql.sql
 Run: `docker compose up -d`
 Add a db.go file to handle database connection initialization. Use it in the main function.
 Then run: `go run ./cmd/web/` to verify connection worked (after adding db.go)
+
+How this works in the app:
+
+In /models/models.go we have a Factory method called `New`
+- It accepts a type. If a non nil value is passed, the app will use a standard database repository.
+- However, if a nil value is passed, we set the package var to a TestRepository, which will satisfy all Repository interface requirements, but won't require the test context to use a real database connection.
+
+We satisfy the Repository interface for the test context in the file: `/models/dogs_testDB.go`
+
+in `/cmd/web/setup_test.go` we pass a nil value to set the package level variable repo to a TestRepository instance.
+
+Then, in handlers_test.go our test is setup to use the TestRepository instance, which enables to bypass a real database and check the response based on the app level context required to access the handler.
