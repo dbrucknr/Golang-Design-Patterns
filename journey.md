@@ -61,3 +61,8 @@ Then, in handlers_test.go our test is setup to use the TestRepository instance, 
 # Chapter 4: Singleton Pattern
 - Allows us to restrict the instantiation of a class to one / singular instance.
 - The pattern is useful when exactly one object is needed to coordinate actions across a system.
+
+# Chapter 5: Builder Pattern & Fluent Interface
+- Creational Pattern
+- Fluent Interface is a version of the Builder Pattern. (Does something other than `.Build()`)
+- Builder pattern allows us to chain method calls to build complex objects.
