@@ -54,7 +54,7 @@ func (app *Application) CreateCatFromAbstractFactory(w http.ResponseWriter, r *h
 
 func (app *Application) GetAllDogBreedsJson(w http.ResponseWriter, r *http.Request) {
 	var t toolbox.Tools
-	dogBreed, err := app.Models.DogBreed.All()
+	dogBreed, err := app.App.Models.DogBreed.All()
 	if err != nil {
 		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
 	}

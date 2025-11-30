@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/dbrucknr/go-design-patterns/models"
+	"github.com/dbrucknr/go-design-patterns/config"
 )
 
 const PORT = ":4000"
@@ -17,7 +17,7 @@ const PORT = ":4000"
 type Application struct {
 	templateMap map[string]*template.Template
 	config      ApplicationConfig
-	Models      models.Models
+	App         *config.Configuration
 }
 type ApplicationConfig struct {
 	useCache bool
@@ -39,8 +39,8 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-	// Set the connection for the models (sets a package level variable)
-	app.Models = *models.New(db)
+	// Set the singleton connection for the models (sets a package level variable)
+	app.App = config.New(db)
 
 	// Server Configuration
 	srv := &http.Server{

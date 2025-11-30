@@ -4,7 +4,7 @@ import (
 	"os"
 	"testing"
 
-	"github.com/dbrucknr/go-design-patterns/models"
+	"github.com/dbrucknr/go-design-patterns/config"
 )
 
 var testApp Application
@@ -12,7 +12,7 @@ var testApp Application
 func TestMain(m *testing.M) {
 
 	testApp = Application{
-		Models: *models.New(nil),
+		App: config.New(nil),
 	}
 
 	os.Exit(m.Run())

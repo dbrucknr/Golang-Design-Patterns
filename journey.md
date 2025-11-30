@@ -57,3 +57,7 @@ We satisfy the Repository interface for the test context in the file: `/models/d
 in `/cmd/web/setup_test.go` we pass a nil value to set the package level variable repo to a TestRepository instance.
 
 Then, in handlers_test.go our test is setup to use the TestRepository instance, which enables to bypass a real database and check the response based on the app level context required to access the handler.
+
+# Chapter 4: Singleton Pattern
+- Allows us to restrict the instantiation of a class to one / singular instance.
+- The pattern is useful when exactly one object is needed to coordinate actions across a system.
