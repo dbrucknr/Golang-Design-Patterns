@@ -1,7 +1,6 @@
 package main
 
 import (
-	"database/sql"
 	"flag"
 	"fmt"
 	"html/template"
@@ -18,7 +17,6 @@ const PORT = ":4000"
 type Application struct {
 	templateMap map[string]*template.Template
 	config      ApplicationConfig
-	DB          *sql.DB
 	Models      models.Models
 }
 type ApplicationConfig struct {
@@ -41,8 +39,6 @@ func main() {
 	if err != nil {
 		log.Panic(err)
 	}
-	// Set the database pool in the app instance for sharing
-	app.DB = db
 	// Set the connection for the models (sets a package level variable)
 	app.Models = *models.New(db)
 

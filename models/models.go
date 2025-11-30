@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-var db *sql.DB
+var repo Repository
 
 type Models struct {
 	DogBreed DogBreed
@@ -13,8 +13,13 @@ type Models struct {
 
 // Factory
 func New(conn *sql.DB) *Models {
-	// Set package level db variable to the connection
-	db = conn
+	if conn != nil {
+		// Set package level db variable to the connection
+		repo = NewMySQLRepository(conn)
+	} else {
+		repo = NewTestRepository(nil)
+	}
+
 	return &Models{
 		DogBreed: DogBreed{},
 	}
@@ -34,7 +39,7 @@ type DogBreed struct {
 }
 
 func (d *DogBreed) All() ([]*DogBreed, error) {
-	return d.AllDogBreeds()
+	return repo.AllDogBreeds()
 }
 
 // This will be a remote datasource (which is why its duplicated, even though it is identical to DogBreed)

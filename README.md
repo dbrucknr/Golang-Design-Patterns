@@ -26,3 +26,6 @@ fmt.Println(*p) // prints 10
 - To run: `go run ./cmd/web`
   - To make use of template cache: `go run ./cmd/web -use-cache`
 - Visit: http://localhost:4000/
+
+- `go test -v -count=1 .` (Run tests without a cache)
+- `go test -v .`
