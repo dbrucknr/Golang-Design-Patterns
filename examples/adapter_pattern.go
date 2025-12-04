@@ -32,11 +32,12 @@ func SampleAdapterPatternUsage() {
 	fmt.Println("Todo with XML adapter pattern:\t", xmlTodo)
 }
 
+// Enables hot-swapping of backend services
 type DataInterface interface {
 	GetData() (*Todo, error)
 }
 
-// Wrapper struct
+// Wrapper struct - Anything that satisfies the DataInterface, can be used as a backend service
 type RemoteService struct {
 	Remote DataInterface
 }

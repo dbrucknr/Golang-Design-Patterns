@@ -5,6 +5,7 @@ import (
 	"time"
 )
 
+// Satisfies the Repository interface
 func (m *MySQLRepository) AllDogBreeds() ([]*DogBreed, error) {
 	// If the Db takes longer than 3 seconds, cancel the request
 	ctx, cancel := context.WithTimeout(context.Background(), 3*time.Second)
