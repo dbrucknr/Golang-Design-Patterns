@@ -66,3 +66,12 @@ Then, in handlers_test.go our test is setup to use the TestRepository instance, 
 - Creational Pattern
 - Fluent Interface is a version of the Builder Pattern. (Does something other than `.Build()`)
 - Builder pattern allows us to chain method calls to build complex objects.
+
+# Chapter 6: Adapter Pattern
+- Likely one of the most useful patterns.
+- It makes maintaining code easier.
+- Allows us to have different programs (or parts of the same program) communicate with one another
+- Example: A handlers gets information from something else, and expects it to be in a specific format (e.g., JSON)
+  - But, what if the data comes from 1 of 2 different remote sources, where 1 comes in as JSON and the other comes in as XML?
+    - The adapter allows us to get the XML data and convert it into what the handler expects.
+    - Using this allows us to make existing sections ofg code work with other sections, without modifying those sections.

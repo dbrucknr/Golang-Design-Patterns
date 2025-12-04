@@ -9,6 +9,7 @@ import (
 	"github.com/tsawler/toolbox"
 )
 
+// Template Route Handlers
 func (app *Application) ShowHome(w http.ResponseWriter, r *http.Request) {
 	app.RenderTemplate(w, "home.page.gohtml", nil)
 }
@@ -19,6 +20,7 @@ func (app *Application) ShowPage(w http.ResponseWriter, r *http.Request) {
 	app.RenderTemplate(w, fmt.Sprintf("%s.page.gohtml", page), nil)
 }
 
+// Pattern Route Handlers
 func (app *Application) CreateDogFromFactory(w http.ResponseWriter, r *http.Request) {
 	var t toolbox.Tools
 	_ = t.WriteJSON(w, http.StatusOK, pets.NewPet("dog"))
@@ -51,16 +53,6 @@ func (app *Application) CreateCatFromAbstractFactory(w http.ResponseWriter, r *h
 	}
 	_ = t.WriteJSON(w, http.StatusOK, cat)
 }
-
-func (app *Application) GetAllDogBreedsJson(w http.ResponseWriter, r *http.Request) {
-	var t toolbox.Tools
-	dogBreed, err := app.App.Models.DogBreed.All()
-	if err != nil {
-		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
-	}
-	_ = t.WriteJSON(w, http.StatusOK, dogBreed)
-}
-
 func (app *Application) CreateDogFromBuilder(w http.ResponseWriter, r *http.Request) {
 	var t toolbox.Tools
 	// Create a dog using the builder pattern
@@ -99,4 +91,14 @@ func (app *Application) CreateCatFromBuilder(w http.ResponseWriter, r *http.Requ
 		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
 	}
 	_ = t.WriteJSON(w, http.StatusOK, cat)
+}
+
+// Database Called Route Handlers
+func (app *Application) GetAllDogBreedsJson(w http.ResponseWriter, r *http.Request) {
+	var t toolbox.Tools
+	dogBreed, err := app.App.Models.DogBreed.All()
+	if err != nil {
+		_ = t.ErrorJSON(w, err, http.StatusBadRequest)
+	}
+	_ = t.WriteJSON(w, http.StatusOK, dogBreed)
 }
